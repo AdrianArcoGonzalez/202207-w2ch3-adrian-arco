@@ -1,0 +1,81 @@
+.pantalla{
+    display:flex;
+    background-color:rgb(28, 28, 206);
+    width: 400px;
+    height: 100px;
+    box-shadow:  inset 0 0 20px #000;;
+    align-items:center;
+    justify-content:center;
+    font-size:xx-large;
+    border-color:black;
+    flex-wrap: wrap;
+    color:white;
+}
+.teclado{
+    display: flex;
+    width: 400px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.boton{
+    font-size: xx-large;
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.boton:hover{
+    background-color: rgb(64, 64, 231);
+    color:white;  
+}
+.boton-0:hover{
+    background-color: rgb(71, 71, 161);
+    color:white;  
+}
+#boton-reset{
+    width:200px;
+}
+.boton-0{
+    border-style: solid;
+    border-width: 1px;
+    width: 200px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
+.boton-operacion{
+    font-size: xx-large;
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 152, 7);
+}
+.boton-operacion:hover{
+    background-color:rgb(248, 212, 10);
+}
+#boton-resultado{
+    height:100px;
+    width:200px;
+    font-size: xx-large;
+}
+#boton-resultado:hover{
+    background-color:rgb(248, 212, 10); 
+}
+#body{
+    background-image: url(https://previews.123rf.com/images/pdreams/pdreams1405/pdreams140500005/28080238-fondo-matem%C3%A1ticas-n%C3%BAmero-aleatorio-colorida-ilustraci%C3%B3n.jpg?fj=1);
+}
+
+#calculadora{
+    display:block;
+    margin-left:auto;
+    margin-top: 10%;
+    margin-right: auto;
+    width:30%;
+}
