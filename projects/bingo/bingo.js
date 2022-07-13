@@ -1,6 +1,5 @@
-//crear tageta bingo
 const xToNumbers = `X`;
-let bombo = [];
+const bombo = [];
 let turn = 0;
 let bingoCard = [];
 const playerName = prompt(`Dime tu nombre`);
@@ -8,9 +7,9 @@ let lineaDone = false;
 
 const createBingoCard = () => {
   let generateBingoCardNumbers = ``;
-  let firstLaneBingoCard = [];
-  let secondLaneBingoCard = [];
-  let thirdLaneBingoCard = [];
+  const firstLaneBingoCard = [];
+  const secondLaneBingoCard = [];
+  const thirdLaneBingoCard = [];
 
   for (let i = 0; i < 15; i++) {
     generateBingoCardNumbers = Math.floor(Math.random() * 90) + 1;
@@ -36,12 +35,11 @@ const markNumbersOnBingoCard = (element, array) => {
     }
   }
 };
-// Mostrar targeta bingo
-const showCard = (arr) => {
-  return console.log(`Este es tu cartón`), console.table(arr);
-};
 
-//Confirmar cartón para comenzar
+const showCard = (arr) => (
+  console.log(`Este es tu cartón`), console.table(arr)
+);
+
 const confirmCard = () => {
   showCard(bingoCard);
   switch (
@@ -57,9 +55,10 @@ const confirmCard = () => {
       createBingoCard();
       confirmCard();
       break;
+    default:
   }
 };
-//tabla highscore principio
+
 const winnersTableStart = () => {
   const highScoreTableStarting = [
     { Name: `Marta`, Score: 64 },
@@ -72,16 +71,16 @@ const winnersTableStart = () => {
     console.table(highScoreTableStarting)
   );
 };
-//tabla highscore final
+
 const winnersTableEnd = (playerName, turn) => {
-  let highScoreTableEnding = [
+  const highScoreTableEnding = [
     { Name: `Marta`, Score: 64 },
     { Name: `Albert`, Score: 53 },
     { Name: `Maria`, Score: 38 },
     { Name: `Juan`, Score: 20 },
   ];
-  let actualPlayerScore = 100 - parseFloat(turn);
-  let actualPlayer = {
+  const actualPlayerScore = 100 - parseFloat(turn);
+  const actualPlayer = {
     Name: playerName,
     Score: actualPlayerScore,
   };
@@ -89,7 +88,7 @@ const winnersTableEnd = (playerName, turn) => {
 
   return console.table(highScoreTableEnding);
 };
-//Do it, do it better
+// Do it, do it better
 const sayLineaOneTime = (array) => {
   if (
     (array[0][0] === xToNumbers &&
@@ -114,20 +113,15 @@ const sayLineaOneTime = (array) => {
     lineaDone = false;
   }
 };
-// acabar bingo
+
 const bingoEnd = (array) => {
   for (let i = 0; i < array.length; i++) {
-    if (
-      !array[i].every((currentNumber) => {
-        return currentNumber === xToNumbers;
-      })
-    ) {
+    if (!array[i].every((currentNumber) => currentNumber === xToNumbers)) {
       return false;
     }
   }
   return true;
 };
-//Nuevo turno
 
 const newTurn = () => {
   switch (confirm(`Siguiente turno?`)) {
@@ -138,7 +132,7 @@ const newTurn = () => {
         break;
       } else if (lineaDone === true) {
         const newNumber = generateNumber();
-        turn = turn + 1;
+        turn += 1;
         showCard(bingoCard);
         console.log(`Estamos en el turno`, turn);
         console.log("Este es el numero actual", newNumber);
@@ -146,7 +140,7 @@ const newTurn = () => {
         newTurn();
       } else if (lineaDone === false) {
         const newNumber = generateNumber();
-        turn = turn + 1;
+        turn += 1;
         showCard(bingoCard);
         sayLineaOneTime(bingoCard);
         console.log(`Estamos en el turno`, turn);
@@ -160,10 +154,10 @@ const newTurn = () => {
       alert(`Hasta la proxima!`);
 
       break;
+    default:
   }
 };
 
-//Creador de numeros random
 const generateNumber = () => {
   let newNumber;
   do {
@@ -172,13 +166,12 @@ const generateNumber = () => {
   bombo.push(newNumber);
   return newNumber;
 };
-//verificar numeros
+
 function checkGeneratedNumberAlreadyExist(element, array) {
   if (array.includes(element)) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 const mainExecuterFunction = () => {
