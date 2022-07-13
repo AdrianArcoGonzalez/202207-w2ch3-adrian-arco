@@ -88,7 +88,7 @@ const winnersTableEnd = (playerName, turn) => {
 
   return console.table(highScoreTableEnding);
 };
-// Do it, do it better
+
 const sayLineaOneTime = (array) => {
   if (
     (array[0][0] === xToNumbers &&
@@ -123,6 +123,21 @@ const bingoEnd = (array) => {
   return true;
 };
 
+function checkGeneratedNumberAlreadyExist(element, array) {
+  if (array.includes(element)) {
+    return true;
+  }
+  return false;
+}
+
+const generateNumber = () => {
+  let newNumber;
+  do {
+    newNumber = Math.floor(Math.random() * 90) + 1;
+  } while (checkGeneratedNumberAlreadyExist(newNumber, bombo));
+  bombo.push(newNumber);
+  return newNumber;
+};
 const newTurn = () => {
   switch (confirm(`Siguiente turno?`)) {
     case true:
@@ -158,25 +173,9 @@ const newTurn = () => {
   }
 };
 
-const generateNumber = () => {
-  let newNumber;
-  do {
-    newNumber = Math.floor(Math.random() * 90) + 1;
-  } while (checkGeneratedNumberAlreadyExist(newNumber, bombo));
-  bombo.push(newNumber);
-  return newNumber;
-};
-
-function checkGeneratedNumberAlreadyExist(element, array) {
-  if (array.includes(element)) {
-    return true;
-  }
-  return false;
-}
-
 const mainExecuterFunction = () => {
   winnersTableStart();
-  createBingoCard(bingoCard);
+  createBingoCard();
   confirmCard();
   newTurn();
 };

@@ -14,10 +14,8 @@ const botonDivi = document.getElementById("boton-dividir");
 const botonSuma = document.getElementById("boton-sumar");
 const botonResultado = document.getElementById("boton-resultado");
 const botonReset = document.getElementById("boton-reset");
-const pantalla = document.getElementById("pantalla");
 const botonComa = document.getElementById("boton-punto");
 
-//functions
 let screenNumber = "";
 let pressedOperation = "";
 let tempNumber1 = null;
@@ -41,8 +39,7 @@ const operations = () => {
   }
 };
 const checkIfDecimals = () => {
-  debugger;
-  if (result % 1 != 0) {
+  if (result % 1 !== 0) {
     decimalResult = result.toFixed(3);
   } else {
     decimalResult = result;
@@ -53,9 +50,7 @@ const checkMaxNums = () => {
   if (screenNumber.length >= 20) {
     return true;
   }
-  {
-    return false;
-  }
+  return false;
 };
 
 const createEventlistenersNums = () => {
@@ -163,7 +158,7 @@ botonResultado.addEventListener("click", () => {
   tempNumber2 = Number(screenNumber);
   operations();
   checkIfDecimals();
-  StringResult = decimalResult.toString();
+  const StringResult = decimalResult.toString();
   decimalResult = StringResult.replace(".", ",");
   document.getElementById("pantalla").innerHTML = decimalResult;
 });
